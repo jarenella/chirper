@@ -1,0 +1,42 @@
+<div class="row">
+  <img src="{{profile_pic}}" class="main-profile-pic" alt="User's profile picture">
+  <div class="col-auto">
+    <h2>{{display_name}}!</h2>
+    <h3>@{{username}}</h3>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-6">
+    <h3>Create a New Post:</h3>
+
+    <form class="form new-post-form">
+      <div class="form-group">
+        <label for="post-body">New post:</label>
+        <textarea class="form-input" id="post-body" name="post-body" placeholder="What's happening?"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Post</button>
+      </div>
+    </form>
+  </div>
+
+  {{#if posts.length}}
+  <div class="col-md-6 project-list">
+    <h3>{{username}}'s posts:</h3>
+
+    {{#each posts as |post|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4><a class="profile-page-post" href="/post/{{post.id}}">{{post.body}}</a></h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  {{/if}}
+</div>
+
+<script src="./js/profile.js"></script>

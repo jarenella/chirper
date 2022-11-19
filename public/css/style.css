@@ -1,0 +1,82 @@
+header, .post:not(:last-child) {
+  border-bottom: 1px solid rgb(61, 61, 61);
+  background-color: black;
+}
+
+body {
+  background-color: black;
+}
+
+
+/* logout, login, and profile buttons */
+.no-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  font-size: 100%;
+}
+
+/* logout, login, and profile buttons hover */
+.no-button:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.title {
+  color:white;
+}
+
+.title:hover {
+  color: white;
+  text-decoration: none;
+}
+
+label {
+  color: white;
+}
+
+h1 {
+  color: white;
+}
+
+h2 {
+  color: white;
+}
+
+h3 {
+  color: white;
+}
+
+p {
+  color: white;
+}
+
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+textarea {
+  line-height:30px;
+  opacity:0.4; 
+}
+
+.profile-page-post {
+  color: white;
+  font-size: 15px;
+}
+
+.profile-page-post:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.main-profile-pic {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}

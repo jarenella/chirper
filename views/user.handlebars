@@ -1,0 +1,22 @@
+<div class="row">
+    <img src="{{profile_pic}}" class="main-profile-pic" alt="User's profile picture">
+    <div class="col-auto">
+        <h2>{{display_name}}!</h2>
+        <h3>@{{username}}</h3>
+    </div>
+</div>
+
+{{#if posts.length}}
+<div class="col-md-12 post-list">
+    <h3>{{username}}'s posts:</h3>
+
+    {{#each posts as |post|}}
+    <div class="row mb-2">
+        <div class="col-md-8">
+            <h4><a class="profile-page-post" href="/post/{{post.id}}">{{post.body}}</a></h4>
+        </div>
+    </div>
+    {{/each}}
+</div>
+{{/if}}
+</div>
