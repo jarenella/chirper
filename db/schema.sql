@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS twitter2db;
-CREATE DATABASE twitter2db;
+DROP DATABASE IF EXISTS chirper_db;
+CREATE DATABASE chirper_db;
