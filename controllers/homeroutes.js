@@ -8,7 +8,7 @@ router.get('/', authLogIn, async (req, res) => {
     //makes array of serialized clean data
     const posts = postData.map(post => post.get({plain: true}))
     
-    res.render("homepage", {posts, logged_in:req.session.logged_in});
+    res.render("homepage", {posts, logged_in:req.session.logged_in}); //always send req.session.logged_in to change renders based on whether user is or isn't logged in
 })
 
 router.get('/login', async (req, res) => {
