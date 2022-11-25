@@ -80,3 +80,8 @@ textarea {
   height: 200px;
   border-radius: 50%;
 }
+
+.no-button {
+  font-weight: bold;
+  margin-right: 10px;
+}

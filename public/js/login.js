@@ -17,7 +17,7 @@ const loginFormHandler = async (event) => {
       // If successful, redirect the browser to the profile page
       document.location.replace('/profile');
     } else {
-      alert(response.statusText);
+      alert("Your username or password is incorrect. Please try again.");
     }
   }
 };
@@ -25,14 +25,18 @@ const loginFormHandler = async (event) => {
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
-  const name = document.querySelector('#name-signup').value.trim();
-  const email = document.querySelector('#email-signup').value.trim();
+  //these variables MUST be in snake case to perfectly match the database names or it doesn't work
+  //i know camel case is goated and much better so that sucks but whatever
+  const username = document.querySelector('#name-signup').value.trim();
+  const display_name = document.querySelector('#display-name-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
+  const profile_pic = "none";
+  const is_verified = "0";
 
-  if (name && email && password) {
+  if (username && password && display_name && profile_pic && is_verified) {
     const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ username, display_name, password, profile_pic, is_verified }),
       headers: { 'Content-Type': 'application/json' },
     });
 
