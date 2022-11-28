@@ -13,11 +13,13 @@ Follower.init(
     },
     following_user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      //key: 'id'
     },
     followed_user_id: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      //key: 'id'
     }
   },
   {
@@ -25,8 +27,8 @@ Follower.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'post',
+    modelName: 'follower',
   }
 );
 
-module.exports = Post;
+module.exports = Follower;
