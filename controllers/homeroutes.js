@@ -3,8 +3,22 @@ const { Post, User, Follower } = require('../models');
 const authLogIn = require('../utils/authLogIn');
 
 router.get('/', authLogIn, async (req, res) => {
-    //get posts
-    const postData = await Post.findAll({include:[{model: User}]});
+    //get the id of everyone the user follows
+    const following = await Follower.findAll({
+        where: { following_user_id: req.session.user_id}
+    })
+    //loop through the data to get every individual ID
+    let followedUsersIDs = [];
+    for (i=0; i< following.length; i++) {
+        followedUsersIDs.push(following[i].followed_user_id)
+    }
+
+    //get posts for each account that the user follows
+    const postData = await Post.findAll({
+        where: {
+            user_id: followedUsersIDs
+        },
+        include:[{model: User}]});
     //makes array of serialized clean data
     const posts = postData.map(post => post.get({plain: true}))
     
