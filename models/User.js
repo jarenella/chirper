@@ -39,6 +39,10 @@ User.init(
     is_verified: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+    },
+    is_admin: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
     }
   },
   {
