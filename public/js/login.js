@@ -30,7 +30,7 @@ const signupFormHandler = async (event) => {
   const username = document.querySelector('#name-signup').value.trim();
   const display_name = document.querySelector('#display-name-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
-  const profile_pic = "none";
+  const profile_pic = "https://t4.ftcdn.net/jpg/02/15/84/43/360_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg";
   const is_verified = "0";
 
   if (username && password && display_name && profile_pic && is_verified) {

@@ -9,20 +9,29 @@ router.get('/', authLogIn, async (req, res) => {
     })
     //loop through the data to get every individual ID
     let followedUsersIDs = [];
-    for (i=0; i< following.length; i++) {
+    for (i=0; i < following.length; i++) {
         followedUsersIDs.push(following[i].followed_user_id)
     }
 
-    //get posts for each account that the user follows
-    const postData = await Post.findAll({
-        where: {
-            user_id: followedUsersIDs
-        },
-        include:[{model: User}]});
-    //makes array of serialized clean data
-    const posts = postData.map(post => post.get({plain: true}))
-    
-    res.render("homepage", {posts, logged_in:req.session.logged_in}); //always send req.session.logged_in to change renders based on whether user is or isn't logged in
+    if (followedUsersIDs.length === 0) {
+        //if user is following no one, just show them random posts
+        const postData = await Post.findAll({include:[{model: User}]});
+        //makes array of serialized clean data
+        const posts = postData.map(post => post.get({ plain: true }))
+        res.render("homepage", { posts, logged_in: req.session.logged_in }); //always send req.session.logged_in to change renders based on whether user is or isn't logged in
+    } else {
+        //get posts for each account that the user follows
+        const postData = await Post.findAll({
+            where: {
+                user_id: followedUsersIDs
+            },
+            include: [{ model: User }]
+        });
+        //makes array of serialized clean data
+        const posts = postData.map(post => post.get({ plain: true }))
+
+        res.render("homepage", { posts, logged_in: req.session.logged_in }); //always send req.session.logged_in to change renders based on whether user is or isn't logged in
+    }
 })
 
 router.get('/login', async (req, res) => {
