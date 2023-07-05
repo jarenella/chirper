@@ -100,7 +100,10 @@ router.get('/user/:id', async (req, res) => {
         const followingCount = following.count;
         console.log(followingCount + " is the following count")
 
-        res.render("user", { ...user, logged_in: req.session.logged_in, followerCount, followingCount });
+        const loggedInUserData = await User.findByPk(req.session.user_id, {include: [{model: Post}]})
+        const loggedInUser = loggedInUserData.get({plain:true})
+
+        res.render("user", { ...user, logged_in: req.session.logged_in, followerCount, followingCount, loggedInUser });
     }
     else { //if a user with that id doesnt exist, render the 404 page
         res.render("404route", {logged_in:req.session.logged_in});

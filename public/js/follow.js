@@ -1,18 +1,24 @@
 const followButton = document.getElementById("follow-button");
 const unfollowButton = document.getElementById("unfollow-button");
-const usersID = followButton.className;
+const profileID = followButton.className;
+const loggedInUserID = unfollowButton.className;
 
-console.log(usersID);
+console.log(profileID);
 
 
 followButton.addEventListener("click", async () => {
-    // const response = await fetch("/api/followers", {
+    const data = {
+        following_user_id: loggedInUserID,
+        followed_user_id: profileID,
+    };
+    
+    const response = await fetch("/api/followers", {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json' },
+    })
 
-    //     method: 'POST',
-    //     body: JSON.stringify({ username, password }),
-    //     headers: { 'Content-Type': 'application/json' },
-
-    // })
+    console.log(response);
 })
 
 unfollowButton.addEventListener("click", async () => {
