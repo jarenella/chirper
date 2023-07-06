@@ -18,9 +18,14 @@ followButton.addEventListener("click", async () => {
         headers: { 'Content-Type': 'application/json' },
     })
 
-    console.log(response);
+    console.log("Follow response: " + response);
 })
 
 unfollowButton.addEventListener("click", async () => {
-    console.log("clicked");
+    const response = await fetch(`/api/followers/${profileID}`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+    })
+
+    console.log("Unfollow response: " + response);
 })
