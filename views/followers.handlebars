@@ -1,0 +1,19 @@
+<h1>A BIG TEST :D</h1>
+
+<!-- Loop over each object in the followers array -->
+{{#each followers as |follower| }}
+<div class="row mb-4 post">
+  <div class="col-md-5">
+    <h2>
+      <img src="" class="profile-pic" alt="User's profile picture">
+      <a href="/post/{{post.id}}">This user follows them: {{follower.following_user_id}}</a>
+    </h2>
+    <p>Created on {{post.date_created}}</p>
+  </div>
+  <div class="col-md-7">
+    <p>
+      {{post.body}}
+    </p>
+  </div>
+</div>
+{{/each}}

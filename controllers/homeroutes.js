@@ -110,6 +110,18 @@ router.get('/user/:id', async (req, res) => {
     }
 })
 
+router.get('/user/:id/followers', async (req, res) => {
+    const followerData = await Follower.findAll({
+        where: {
+            followed_user_id: req.params.id
+        }
+    })
+    const followers = followerData.map(follower => follower.get({ plain: true }));
+    // const followers = followerData.get({plain:true});
+
+    res.render("followers", { followers, logged_in:req.session.logged_in });
+})
+
 router.get('*', async (req, res) => {
     res.render("404route", {logged_in:req.session.logged_in});
 })
